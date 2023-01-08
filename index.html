@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <header>
+    <h1>Weather Dashboard</h1>
+  </header>
+
+  <div id="sidebar">
+    <div id="search-container">
+      <h2>Search by city</h2>
+      <input type="text">
+      <input type="submit" value="Search">
+    </div>
+
+    <div id="history-container">
+
+    </div>
+  </div>
+
+  <div id="main">
+    <div id="current-container">
+      <h2 id="city"></h2>
+      <h3 id="current-date"></h3>
+      <p id="current-temp" class="current-cond">Temperature: </p>
+      <p id="current-wind" class="current-cond">Wind Speed: </p>
+      <p id="current-hum" class="current-cond">Humidity: </p>
+    </div>
+
+    <div id="forecast-container">
+      <h3 id="forecast-heading">5-Day Forecast</h3>
+
+      <div id="forecast-row">
+        <div id="day1">
+          <h4 id="day1-date"></h3>
+          <p id="day1-temp" class="forecast-cond">Temp: </p>
+          <p id="day1-wind" class="forecast-cond">Wind: </p>
+          <p id="day1-hum" class="forecast-cond">Hum: </p>
+        </div>
+
+        <div id="day2">
+          <h4 id="day2-date"></h3>
+          <p id="day2-temp" class="forecast-cond">Temp: </p>
+          <p id="day2-wind" class="forecast-cond">Wind: </p>
+          <p id="day2-hum" class="forecast-cond">Hum: </p>
+        </div>
+
+        <div id="day3">
+          <h4 id="day3-date"></h3>
+          <p id="day3-temp" class="forecast-cond">Temp: </p>
+          <p id="day3-wind" class="forecast-cond">Wind: </p>
+          <p id="day3-hum" class="forecast-cond">Hum: </p>
+        </div>
+
+        <div id="day4">
+          <h4 id="day4-date"></h3>
+          <p id="day4-temp" class="forecast-cond">Temp: </p>
+          <p id="day4-wind" class="forecast-cond">Wind: </p>
+          <p id="day4-hum" class="forecast-cond">Hum: </p>
+        </div>
+
+        <div id="day5">
+          <h4 id="day5-date"></h3>
+          <p id="day5-temp" class="forecast-cond">Temp: </p>
+          <p id="day5-wind" class="forecast-cond">Wind: </p>
+          <p id="day5-hum" class="forecast-cond">Hum: </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
