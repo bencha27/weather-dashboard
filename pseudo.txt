@@ -1,29 +1,29 @@
 Build web page
-    Create elements
-        Header
-        Sidebar
-            Search form
-            Search history
-        Main content
-            Current weather
-            5-day forecast
-    Style elements
-        Header
-        Sidebar
-            Search box
-            Search history
-        Main content
-            Current weather
-            5-day forecast
+  ✅Create elements
+    ✅Header
+    ✅Sidebar
+      ✅Search form
+      ✅Search history
+    ✅Main content
+      ✅Current weather
+      ✅5-day forecast
+  Style elements
+    Header
+    Sidebar
+      Search box
+      Search history
+    Main content
+      Current weather
+      5-day forecast
 Build functionality
-    OpenWeather API call
-        Current weather
-            Get data
-            Display data
-        Forecast
-            Get data
-            Display data
-    Search form
-    Search history
-        Save to localStorage
-        Get from localStorage
+  OpenWeather API call
+    Current weather
+      Get data
+      Display data
+    Forecast
+      Get data
+      Display data
+  Search form
+  Search history
+    Save to localStorage
+    Get from localStorage
