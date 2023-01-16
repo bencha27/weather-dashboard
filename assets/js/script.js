@@ -2,6 +2,7 @@
 var searchInputEl = $("input[type=text]");
 var searchButtonEl = $("#search-button");
 var historyContainerEl = $("#history-container");
+var recentButtonEl = $("button");
 
 var cityEl = $("#city");
 var currentDateEl = $("#current-date");
@@ -35,9 +36,15 @@ var day5WindEl = $("#day5-wind");
 var day5HumEl = $("#day5-hum");
 
 // Variables
+var searchInput;
 var url;
 var lat;
 var lon;
+var recentSearches = [];
+var localStorageSearches = JSON.parse(localStorage.getItem("recent searches"));
+if (localStorageSearches !== null) {
+  recentSearches = localStorageSearches;
+}
 
 // API URLs, key
 var apiUrlGeo = "http://api.openweathermap.org/geo/1.0/";
@@ -45,27 +52,50 @@ var apiUrlCurrent = "https://api.openweathermap.org/data/2.5/weather";
 var apiUrlForecast = "https://api.openweathermap.org/data/2.5/forecast";
 var apiKey = "19c480cdb6d4cf47fa5ba4030638e6b3";
 
+// Display search history
+function displayRecent() {
+  if (localStorageSearches !== null) {
+    historyContainerEl.empty();
+    for (i = 0; i < localStorageSearches.length; i++) {
+      if (localStorageSearches[i]) {
+        var recentSearchButton = $("<button id='recent-button'>");
+        recentSearchButton.text(localStorageSearches[i]);
+        historyContainerEl.append(recentSearchButton);
+      }
+    }
+
+    $("button").click(function() {
+      parseSearch($(this).text());
+    })
+  }
+}
+displayRecent();
+
 // Event listeners
-searchButtonEl.click(parseSearch);
+searchButtonEl.click(function() {
+  searchInput = searchInputEl.val();
+  parseSearch(searchInput);
+  searchInputEl.text("");
+});
 
 // Parse search input
-function parseSearch() {
-  var searchInput = searchInputEl.val();
-  
-  if (isNaN(parseInt(searchInput))) {
+function parseSearch(input) {
+  if (isNaN(parseInt(input))) {
     // If search input is a string
-    var searchInputArray = searchInput.split(",");
+    var searchInputArray = input.split(",");
     if (!searchInputArray[1]) {
       return alert('Please follow this format: "City, State"');
     }
     var city = searchInputArray[0].trim();
     var state = searchInputArray[1].trim();
     getApiCoordFromCity(city, state);
-  } else if (typeof parseInt(searchInput) === "number") {
-    // If search in put is a number
-    var zip = searchInput.trim();
+  } else if (typeof parseInt(input) === "number") {
+    // If search input is a number
+    var zip = input.trim();
     getApiCoordFromZip(zip);
   }
+
+  saveSearch(input);
 }
 
 // API call to get coordinates from city name
@@ -92,7 +122,6 @@ function getApiCoordFromZip(zip) {
     url: url,
     method: "GET",
   }).then(function (response) {
-    console.log(response);
     lat = response.lat;
     lon = response.lon;
     getApiCurrent(lat, lon);
@@ -125,7 +154,6 @@ function getApiForecast(lat, lon) {
     displayForecast(response);
   })
 }
-
 
 // Display current weather
 function displayCurrent(forecast) {
@@ -167,4 +195,12 @@ function displayForecast(forecast) {
   day5TempEl.append(Math.round(day5.main.temp) + " \u2109");
   day5WindEl.append(Math.round(day5.wind.speed) + " mph");
   day5HumEl.append(Math.round(day5.main.humidity) + "%");
+}
+
+// Save search history to localStorage
+function saveSearch(input) {
+  recentSearches.unshift(input);
+  recentSearches.splice(5);
+  localStorage.setItem("recent searches", JSON.stringify(recentSearches));
+  displayRecent();
 }

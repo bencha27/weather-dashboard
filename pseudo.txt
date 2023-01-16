@@ -15,15 +15,15 @@ Build web page
     Main content
       Current weather
       5-day forecast
-Build functionality
-  OpenWeather API call
-    Current weather
-      Get data
-      Display data
-    Forecast
-      Get data
-      Display data
-  Search form
-  Search history
-    Save to localStorage
-    Get from localStorage
+✅Build functionality
+  ✅OpenWeather API call
+    ✅Current weather
+      ✅Get data
+      ✅Display data
+    ✅Forecast
+      ✅Get data
+      ✅Display data
+  ✅Search form
+  ✅Search history
+    ✅Save to localStorage
+    ✅Get from localStorage
