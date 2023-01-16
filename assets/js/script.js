@@ -49,7 +49,7 @@ var lat;
 var lon;
 var recentSearches = [];
 var localStorageSearches = JSON.parse(localStorage.getItem("recent searches"));
-if (localStorageSearches !== null) {
+if (localStorageSearches) {
   recentSearches = localStorageSearches;
 }
 
@@ -62,7 +62,8 @@ var apiUrlIcon = "http://openweathermap.org/img/wn/"
 
 // Display search history
 function displayRecent() {
-  if (localStorageSearches !== null) {
+  localStorageSearches = JSON.parse(localStorage.getItem("recent searches"));
+  
     $("button").remove("#recent-button");
     for (i = 0; i < localStorageSearches.length; i++) {
       if (localStorageSearches[i]) {
@@ -76,9 +77,12 @@ function displayRecent() {
     $("button").click(function() {
       parseSearch($(this).text());
     })
-  }
+  
 }
-displayRecent();
+
+if (localStorageSearches) {
+  displayRecent();
+}
 
 // Hide forecast on page load
 mainEl.addClass("invisible");
@@ -87,7 +91,10 @@ mainEl.addClass("invisible");
 searchButtonEl.click(function() {
   searchInput = searchInputEl.val();
   parseSearch(searchInput);
-  searchInputEl.text("");
+  saveSearch(searchInput);
+  searchInputEl.val("");
+  // setTimeout(displayRecent, 1000)
+  displayRecent();
 });
 
 // Parse search input
@@ -108,7 +115,6 @@ function parseSearch(input) {
   }
 
   mainEl.removeClass("invisible");
-  saveSearch(input);
 }
 
 // API call to get coordinates from city name
@@ -119,7 +125,6 @@ function getApiCoordFromCity(city, state) {
     url: url,
     method: "GET",
   }).then(function (response) {
-    console.log(response[0]);
     lat = response[0].lat;
     lon = response[0].lon;
     getApiCurrent(lat, lon);
@@ -144,8 +149,6 @@ function getApiCoordFromZip(zip) {
 
 // API call to get current weather
 function getApiCurrent(lat, lon) {
-  console.log("Latitude: " + lat);
-  console.log("Longitude: " + lon);
   url = apiUrlCurrent + "?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + apiKey;
   console.log(url);
   $.ajax({
@@ -221,5 +224,4 @@ function saveSearch(input) {
   recentSearches.unshift(input);
   recentSearches.splice(5);
   localStorage.setItem("recent searches", JSON.stringify(recentSearches));
-  displayRecent();
 }

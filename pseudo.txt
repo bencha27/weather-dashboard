@@ -1,4 +1,4 @@
-Build web page
+✅Build web page
   ✅Create elements
     ✅Header
     ✅Sidebar
@@ -7,14 +7,14 @@ Build web page
     ✅Main content
       ✅Current weather
       ✅5-day forecast
-  Style elements
-    Header
-    Sidebar
-      Search box
-      Search history
-    Main content
-      Current weather
-      5-day forecast
+  ✅Style elements
+    ✅Header
+    ✅Sidebar
+      ✅Search box
+      ✅Search history
+    ✅Main content
+      ✅Current weather
+      ✅5-day forecast
 ✅Build functionality
   ✅OpenWeather API call
     ✅Current weather
@@ -27,3 +27,6 @@ Build web page
   ✅Search history
     ✅Save to localStorage
     ✅Get from localStorage
+✅Create README
+  ✅Update content
+  ✅Create demo
