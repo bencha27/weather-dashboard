@@ -5,76 +5,90 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weather Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <link rel="stylesheet" type="css" href="./assets/css/style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
 </head>
 
 <body>
-  <header>
-    <h1>Weather Dashboard</h1>
+  <header class="container-fluid d-flex justify-content-center bg-primary-subtle m-0 p-2">
+    <h1 class="text-warning">Weather Dashboard</h1>
   </header>
 
-  <div id="sidebar">
-    <div id="search-container">
-      <h2>Search by city (US only)</h2>
-      <input type="text" placeholder="City, State or ZIP code">
-      <input id="search-button" type="submit" value="Search">
-    </div>
-
-    <div id="history-container">
-      <h2>Recent searches</h2>
-    </div>
-  </div>
-
-  <div id="main">
-    <div id="current-container">
-      <h2 id="city"></h2>
-      <h3 id="current-date"></h3>
-      <p id="current-temp" class="current-cond">Temperature: </p>
-      <p id="current-wind" class="current-cond">Wind Speed: </p>
-      <p id="current-hum" class="current-cond">Humidity: </p>
-    </div>
-
-    <div id="forecast-container">
-      <h3 id="forecast-heading">5-Day Forecast</h3>
-
-      <div id="forecast-row">
-        <div id="day1">
-          <h4 id="day1-date"></h3>
-          <p id="day1-temp" class="forecast-cond">Temp: </p>
-          <p id="day1-wind" class="forecast-cond">Wind: </p>
-          <p id="day1-hum" class="forecast-cond">Hum: </p>
+  <div class="container">
+    <div class="row">
+      <div id="sidebar" class="col-md-3 p-2">
+        <div id="search-container">
+          <h3>Search by city (US)</h3>
+          <input type="text" placeholder="City, State or ZIP code">
+          <input id="search-button" type="submit" value="Search">
         </div>
-
-        <div id="day2">
-          <h4 id="day2-date"></h3>
-          <p id="day2-temp" class="forecast-cond">Temp: </p>
-          <p id="day2-wind" class="forecast-cond">Wind: </p>
-          <p id="day2-hum" class="forecast-cond">Hum: </p>
-        </div>
-
-        <div id="day3">
-          <h4 id="day3-date"></h3>
-          <p id="day3-temp" class="forecast-cond">Temp: </p>
-          <p id="day3-wind" class="forecast-cond">Wind: </p>
-          <p id="day3-hum" class="forecast-cond">Hum: </p>
-        </div>
-
-        <div id="day4">
-          <h4 id="day4-date"></h3>
-          <p id="day4-temp" class="forecast-cond">Temp: </p>
-          <p id="day4-wind" class="forecast-cond">Wind: </p>
-          <p id="day4-hum" class="forecast-cond">Hum: </p>
-        </div>
-
-        <div id="day5">
-          <h4 id="day5-date"></h3>
-          <p id="day5-temp" class="forecast-cond">Temp: </p>
-          <p id="day5-wind" class="forecast-cond">Wind: </p>
-          <p id="day5-hum" class="forecast-cond">Hum: </p>
+        <hr>
+    
+        <div id="history-container" class="d-flex flex-column">
+          <h3>Recent searches</h3>
         </div>
       </div>
+    
+      <main id="main" class="col-md-9 p-2">
+        <div id="current-container" class="bg-light my-2 p-2">
+          <h2 id="city"></h2>
+          <h4 id="current-date"></h4>
+          <img src="">
+          <p class="current-cond">Temperature: <span id="current-temp"></span></p>
+          <p class="current-cond">Wind Speed: <span id="current-wind"></span></p>
+          <p class="current-cond">Humidity: <span id="current-hum"></span></p>
+        </div>
+    
+        <div id="forecast-container">
+          <h4 id="forecast-heading">5-Day Forecast</h4>
+    
+          <div class=".container-fluid">
+            <div id="forecast-row" class="row">
+              <div id="day1" class="col-md-2 bg-light-subtle m-2">
+                <h5 id="day1-date"></h5>
+                <img id="day1-icon" src="">
+                <p class="forecast-cond">Temp: <span id="day1-temp"></span></p>
+                <p class="forecast-cond">Wind: <span id="day1-wind"></span></p>
+                <p class="forecast-cond">Hum: <span id="day1-hum"></span></p>
+              </div>
+      
+              <div id="day2" class="col-md-2 bg-light-subtle m-2">
+                <h5 id="day2-date"></h5>
+                <img id="day2-icon" src="">
+                <p class="forecast-cond">Temp: <span id="day2-temp"></span></p>
+                <p class="forecast-cond">Wind: <span id="day2-wind"></span></p>
+                <p class="forecast-cond">Hum: <span id="day2-hum"></span></p>
+              </div>
+      
+              <div id="day3" class="col-md-2 bg-light-subtle m-2">
+                <h5 id="day3-date"></h5>
+                <img id="day3-icon" src="">
+                <p class="forecast-cond">Temp: <span id="day3-temp"></span></p>
+                <p class="forecast-cond">Wind: <span id="day3-wind"></span></p>
+                <p class="forecast-cond">Hum: <span id="day3-hum"></span></p>
+              </div>
+      
+              <div id="day4" class="col-md-2 bg-light-subtle m-2">
+                <h5 id="day4-date"></h5>
+                <img id="day4-icon" src="">
+                <p class="forecast-cond">Temp: <span id="day4-temp"></span></p>
+                <p class="forecast-cond">Wind: <span id="day4-wind"></span></p>
+                <p class="forecast-cond">Hum: <span id="day4-hum"></span></p>
+              </div>
+      
+              <div id="day5" class="col-md-2 bg-light-subtle m-2">
+                <h5 id="day5-date"></h5>
+                <img id="day5-icon" src="">
+                <p class="forecast-cond">Temp: <span id="day5-temp"></span></p>
+                <p class="forecast-cond">Wind: <span id="day5-wind"></span></p>
+                <p class="forecast-cond">Hum: <span id="day5-hum"></span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
   </div>
 
