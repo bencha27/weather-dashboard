@@ -104,28 +104,67 @@ function getApiCoordFromZip(zip) {
 function getApiCurrent(lat, lon) {
   console.log("Latitude: " + lat);
   console.log("Longitude: " + lon);
-  url = apiUrlCurrent + "?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey;
+  url = apiUrlCurrent + "?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + apiKey;
   console.log(url);
   $.ajax({
     url: url,
     method: "GET",
   }).then(function (response) {
-    console.log(response);
+    displayCurrent(response);
   })
 }
 
 // API call to get 5-day forecast
 function getApiForecast(lat, lon) {
-  url = apiUrlForecast + "?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey;
+  url = apiUrlForecast + "?lat=" + lat + "&lon=" + lon + "&units=imperial&&appid=" + apiKey;
   console.log(url);
   $.ajax({
     url: url,
     method: "GET",
   }).then(function (response) {
-    console.log(response);
+    displayForecast(response);
   })
 }
 
+
 // Display current weather
+function displayCurrent(forecast) {
+  cityEl.text(forecast.name);
+  currentDateEl.text(dayjs().format("M/D/YYYY"));
+  currentTempEl.append(Math.round(forecast.main.temp) + " \u2109");
+  currentWindEl.append(Math.round(forecast.wind.speed) + " mph");
+  currentHumEl.append(Math.round(forecast.main.humidity) + "%");
+}
 
 // Display 5-day forecast
+function displayForecast(forecast) {
+  day1DateEl.text(dayjs().add(1, "day").format("M/D"));
+  var day1 = forecast.list[5];
+  day1TempEl.append(Math.round(day1.main.temp) + " \u2109");
+  day1WindEl.append(Math.round(day1.wind.speed) + " mph");
+  day1HumEl.append(Math.round(day1.main.humidity) + "%");
+
+  day2DateEl.text(dayjs().add(2, "day").format("M/D"));
+  var day2 = forecast.list[11];
+  day2TempEl.append(Math.round(day2.main.temp) + " \u2109");
+  day2WindEl.append(Math.round(day2.wind.speed) + " mph");
+  day2HumEl.append(Math.round(day2.main.humidity) + "%");
+
+  day3DateEl.text(dayjs().add(3, "day").format("M/D"));
+  var day3 = forecast.list[17];
+  day3TempEl.append(Math.round(day3.main.temp) + " \u2109");
+  day3WindEl.append(Math.round(day3.wind.speed) + " mph");
+  day3HumEl.append(Math.round(day3.main.humidity) + "%");
+
+  day4DateEl.text(dayjs().add(4, "day").format("M/D"));
+  var day4 = forecast.list[23];
+  day4TempEl.append(Math.round(day4.main.temp) + " \u2109");
+  day4WindEl.append(Math.round(day4.wind.speed) + " mph");
+  day4HumEl.append(Math.round(day4.main.humidity) + "%");
+
+  day5DateEl.text(dayjs().add(5, "day").format("M/D"));
+  var day5 = forecast.list[29];
+  day5TempEl.append(Math.round(day5.main.temp) + " \u2109");
+  day5WindEl.append(Math.round(day5.wind.speed) + " mph");
+  day5HumEl.append(Math.round(day5.main.humidity) + "%");
+}
