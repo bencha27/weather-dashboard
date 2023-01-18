@@ -54,11 +54,11 @@ if (localStorageSearches) {
 }
 
 // API URLs, key
-var apiUrlGeo = "http://api.openweathermap.org/geo/1.0/";
-var apiUrlCurrent = "http://api.openweathermap.org/data/2.5/weather";
-var apiUrlForecast = "http://api.openweathermap.org/data/2.5/forecast";
+var apiUrlGeo = "https://api.openweathermap.org/geo/1.0/";
+var apiUrlCurrent = "https://api.openweathermap.org/data/2.5/weather";
+var apiUrlForecast = "https://api.openweathermap.org/data/2.5/forecast";
 var apiKey = "19c480cdb6d4cf47fa5ba4030638e6b3";
-var apiUrlIcon = "http://openweathermap.org/img/wn/"
+var apiUrlIcon = "https://openweathermap.org/img/wn/"
 
 // Display search history
 function displayRecent() {
